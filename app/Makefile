@@ -10,5 +10,11 @@ rebuild:
 	@./gradlew installDist
 	@clear
 
-run:
-	@./gradlew run
+run-dist:
+	@./build/install/app/bin/app
+
+version:
+	@./build/install/app/bin/app --version
+
+help:
+	@./build/install/app/bin/app --help
