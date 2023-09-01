@@ -17,11 +17,11 @@ public class FindingDifferences {
         allKeys.addAll(second.keySet());
         return allKeys.stream().collect(Collectors.toMap(
                 Function.identity(),
-                key -> separate(key, first, second),
+                key -> separation(key, first, second),
                 (o1, o2) -> o1, TreeMap::new));
     }
 
-    private static Map<String, Object> separate(String key, Map<String, Object> first, Map<String, Object> second) {
+    private static Map<String, Object> separation(String key, Map<String, Object> first, Map<String, Object> second) {
         Map<String, Object> result = new TreeMap<>(Comparator.reverseOrder());
 
         if (first.containsKey(key)) {
