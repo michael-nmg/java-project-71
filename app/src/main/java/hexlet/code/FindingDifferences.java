@@ -21,33 +21,23 @@ public class FindingDifferences {
                 (o1, o2) -> o1, TreeMap::new));
     }
 
-    private static Map<String, Object> separate(
-            String key,
-            Map<String, Object> first,
-            Map<String, Object> second) {
+    private static Map<String, Object> separate(String key, Map<String, Object> first, Map<String, Object> second) {
         Map<String, Object> result = new TreeMap<>(Comparator.reverseOrder());
-        String prefix;
-        Object value;
 
-        if (first.containsKey(key) && second.containsKey(key)) {
-            if (first.get(key).equals(second.get(key))) {
-                prefix = " ";
-                value = first.get(key);
+        if (first.containsKey(key)) {
+            if (second.containsKey(key)) {
+                if (first.get(key).equals(second.get(key))) {
+                    result.put(" ", first.get(key));
+                } else {
+                    result.put("-", first.get(key));
+                    result.put("+", second.get(key));
+                }
             } else {
                 result.put("-", first.get(key));
-                result.put("+", second.get(key));
-                return result;
             }
         } else {
-            if (first.containsKey(key)) {
-                prefix = "-";
-                value = first.get(key);
-            } else {
-                prefix = "+";
-                value = second.get(key);
-            }
+            result.put("+", second.get(key));
         }
-        result.put(prefix, value);
         return result;
     }
 
