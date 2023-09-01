@@ -5,6 +5,9 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
+
 import java.util.concurrent.Callable;
 
 @Command(name = "gendiff",
@@ -12,6 +15,12 @@ import java.util.concurrent.Callable;
         version = "Generate differences, version 1.0",
         description = "Compares two configuration files and shows a difference.")
 class App implements Callable<Integer> {
+
+    @Option(names = {"-f", "--format"},
+            paramLabel = "format",
+            defaultValue = "stylish",
+            description = "output format [default: ${DEFAULT-VALUE}]")
+    private String format;
 
     @Parameters(index = "0",
             paramLabel = "filepath1",
@@ -23,15 +32,16 @@ class App implements Callable<Integer> {
             description = "path to second file")
     private String filePath2;
 
-    @Option(names = {"-f", "--format"},
-            paramLabel = "format",
-            defaultValue = "stylish",
-            description = "output format [default: ${DEFAULT-VALUE}]")
-    private String format;
-
     @Override
-    public Integer call() {
-        System.out.println("Hello World!");
+    public Integer call() throws Exception {
+        Path first = Paths.get(filePath1);
+        Path second = Paths.get(filePath2);
+
+        var firstMap = ParseFile.parse(first);
+        var secondMap = ParseFile.parse(second);
+        var calcDiff = FindingDifferences.search(firstMap, secondMap);
+
+        System.out.println(Presentation.plainTextPresentation(calcDiff));
         return 0;
     }
 
@@ -39,4 +49,5 @@ class App implements Callable<Integer> {
         int exitCode = new CommandLine(new App()).execute(args);
         System.exit(exitCode);
     }
+
 }
