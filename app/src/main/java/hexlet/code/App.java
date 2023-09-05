@@ -37,11 +37,17 @@ class App implements Callable<Integer> {
         Path first = Paths.get(filePath1);
         Path second = Paths.get(filePath2);
 
-        var firstMap = ParseFile.parse(first);
-        var secondMap = ParseFile.parse(second);
-        var calcDiff = FindingDifferences.search(firstMap, secondMap);
+        String check = FileChecker.isAvailable(first, second);
 
-        System.out.println(Presentation.plainTextPresentation(calcDiff));
+        if (check.isEmpty()) {
+            var firstMap = ParseFile.parse(first);
+            var secondMap = ParseFile.parse(second);
+            var calcDiff = FindingDifferences.search(firstMap, secondMap);
+            System.out.println(Presentation.plainTextPresentation(calcDiff));
+        } else {
+            System.err.println(check);
+        }
+
         return 0;
     }
 
