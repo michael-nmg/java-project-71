@@ -21,25 +21,23 @@ public class FindingDifferences {
     }
 
     private static Map<String, Object> separation(String key, Map<String, Object> first, Map<String, Object> second) {
-        boolean fKey = first.containsKey(key);
-        boolean sKey = second.containsKey(key);
         Map<String, Object> result = new TreeMap<>(Comparator.reverseOrder());
 
-        if (!fKey) {
+        if (!first.containsKey(key)) {
             result.put("+", second.get(key));
+            return result;
         }
 
-        if (!sKey) {
+        if (!second.containsKey(key)) {
             result.put("-", first.get(key));
+            return result;
         }
 
-        if (fKey && sKey) {
-            if (first.get(key).equals(second.get(key))) {
-                result.put(" ", first.get(key));
-            } else {
-                result.put("-", first.get(key));
-                result.put("+", second.get(key));
-            }
+        if (first.get(key).equals(second.get(key))) {
+            result.put(" ", first.get(key));
+        } else {
+            result.put("-", first.get(key));
+            result.put("+", second.get(key));
         }
 
         return result;
