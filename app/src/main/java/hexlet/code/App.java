@@ -36,8 +36,7 @@ class App implements Callable<Integer> {
     public Integer call() throws Exception {
         Path first = Paths.get(filePath1);
         Path second = Paths.get(filePath2);
-
-        String check = FileChecker.isAvailable(first, second);
+        String check = FilesChecker.available(first, second);
 
         if (check.isEmpty()) {
             var firstMap = ParseFile.parse(first);

@@ -12,7 +12,7 @@ import java.nio.file.attribute.PosixFilePermissions;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class FileCheckerTest {
+class FilesCheckerTest {
 
     private static final Path FILE_1 = Paths.get("src/test/resources/file1.json");
     private static final Path FILE_2 = Paths.get("src/test/resources/file2.json");
@@ -28,7 +28,7 @@ class FileCheckerTest {
 
     @Test
     void testOK() throws IOException {
-        String actually = FileChecker.isAvailable(FILE_1, FILE_2);
+        String actually = FilesChecker.available(FILE_1, FILE_2);
         String expected = "";
 
         assertEquals(actually, expected);
@@ -36,7 +36,7 @@ class FileCheckerTest {
 
     @Test
     void testNotExistFirst() throws IOException {
-        String actually = FileChecker.isAvailable(NOT_EXIST_FILE, FILE_2);
+        String actually = FilesChecker.available(NOT_EXIST_FILE, FILE_2);
         String expected = String.format("%s is not exist.", NOT_EXIST_FILE);
 
         assertEquals(actually, expected);
@@ -44,7 +44,7 @@ class FileCheckerTest {
 
     @Test
     void testNotExistSecond() throws IOException {
-        String actually = FileChecker.isAvailable(FILE_1, NOT_EXIST_FILE);
+        String actually = FilesChecker.available(FILE_1, NOT_EXIST_FILE);
         String expected = String.format("%s is not exist.", NOT_EXIST_FILE);
 
         assertEquals(actually, expected);
@@ -52,7 +52,7 @@ class FileCheckerTest {
 
     @Test
     void testNotReadFirst() throws IOException {
-        String actually = FileChecker.isAvailable(NOT_READBLE_FILE, FILE_2);
+        String actually = FilesChecker.available(NOT_READBLE_FILE, FILE_2);
         String expected = String.format("%s is not readable.", NOT_READBLE_FILE);
 
         assertEquals(actually, expected);
@@ -60,7 +60,7 @@ class FileCheckerTest {
 
     @Test
     void testNotReadSecond() throws IOException {
-        String actually = FileChecker.isAvailable(FILE_1, NOT_READBLE_FILE);
+        String actually = FilesChecker.available(FILE_1, NOT_READBLE_FILE);
         String expected = String.format("%s is not readable.", NOT_READBLE_FILE);
 
         assertEquals(actually, expected);
@@ -68,7 +68,7 @@ class FileCheckerTest {
 
     @Test
     void testSameFile() throws IOException {
-        String actually = FileChecker.isAvailable(FILE_1, FILE_1);
+        String actually = FilesChecker.available(FILE_1, FILE_1);
         String expected = "Zero changes. This is the same file.";
 
         assertEquals(actually, expected);
