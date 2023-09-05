@@ -21,7 +21,6 @@ jobs:
         run: |
           ./gradlew checkstyleMain
           ./gradlew test
-          ./gradlew build
           ./gradlew installDist
           echo "Example:"
           echo ""
