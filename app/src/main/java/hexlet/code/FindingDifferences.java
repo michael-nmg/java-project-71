@@ -10,11 +10,10 @@ import java.util.stream.Collectors;
 
 public class FindingDifferences {
 
-    public static Map<String, Map<String, Object>> search(
-            Map<String, Object> first,
-            Map<String, Object> second) {
+    public static Map<String, Map<String, Object>> search(Map<String, Object> first, Map<String, Object> second) {
         Set<String> allKeys = new HashSet<>(first.keySet());
         allKeys.addAll(second.keySet());
+
         return allKeys.stream().collect(Collectors.toMap(
                 Function.identity(),
                 key -> separation(key, first, second),
@@ -22,22 +21,27 @@ public class FindingDifferences {
     }
 
     private static Map<String, Object> separation(String key, Map<String, Object> first, Map<String, Object> second) {
+        boolean fKey = first.containsKey(key);
+        boolean sKey = second.containsKey(key);
         Map<String, Object> result = new TreeMap<>(Comparator.reverseOrder());
 
-        if (first.containsKey(key)) {
-            if (second.containsKey(key)) {
-                if (first.get(key).equals(second.get(key))) {
-                    result.put(" ", first.get(key));
-                } else {
-                    result.put("-", first.get(key));
-                    result.put("+", second.get(key));
-                }
-            } else {
-                result.put("-", first.get(key));
-            }
-        } else {
+        if (!fKey) {
             result.put("+", second.get(key));
         }
+
+        if (!sKey) {
+            result.put("-", first.get(key));
+        }
+
+        if (fKey && sKey) {
+            if (first.get(key).equals(second.get(key))) {
+                result.put(" ", first.get(key));
+            } else {
+                result.put("-", first.get(key));
+                result.put("+", second.get(key));
+            }
+        }
+
         return result;
     }
 
