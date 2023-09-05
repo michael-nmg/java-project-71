@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import java.io.IOException;
 import java.util.function.Predicate;
 
 import java.nio.file.Path;
@@ -8,18 +9,28 @@ import java.nio.file.Files;
 public class FileChecker {
     private static Predicate<Path> isReadble = Files::isReadable;
 
-    public static boolean isAvailable(Path first, Path second) throws Exception {
+    public static String isAvailable(Path first, Path second) throws IOException {
         if (Files.notExists(first)) {
-            throw new Exception("First file is not exist.");
-        } else if (Files.notExists(second)) {
-            throw new Exception("Second file is not exist.");
-        } else if (Files.isSameFile(first, second)) {
-            throw new Exception("Zero changes are the same file.");
-        } else if (isReadble.negate().test(first)) {
-            throw new Exception("Not readable first file");
-        } else if (isReadble.negate().test(second)) {
-            throw new Exception("Not readable second file");
+            return String.format("%s is not exist.", first);
         }
-        return true;
+
+        if (Files.notExists(second)) {
+            return String.format("%s is not exist.", second);
+        }
+
+        if (isReadble.negate().test(first)) {
+            return String.format("%s is not readable.", first);
+        }
+
+        if (isReadble.negate().test(second)) {
+            return String.format("%s is not readable.", second);
+        }
+
+        if (Files.isSameFile(first, second)) {
+            return "Zero changes. This is the same file.";
+        }
+
+        return "";
     }
+
 }
