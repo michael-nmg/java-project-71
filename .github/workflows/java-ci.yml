@@ -17,13 +17,13 @@ jobs:
           java-version: '20'
           distribution: 'temurin'
 
-      - name: Build with Gradle
+      - name: Gradle
         uses: gradle/gradle-build-action@v2
         with:
           gradle-version: 8.3
 
-      - name: setup, checkstyle and run test
-        build-root-directory: app
+      - name: Checkstyle, build and tests
+        working-directory: app
         run: |
           make checkstyle
           make build
