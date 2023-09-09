@@ -11,7 +11,7 @@ public class Presentation {
         }
         return "{\n" + calcDiff.entrySet().stream()
                 .map(Presentation::enrtyToString)
-                .collect(Collectors.joining()) + "}\n";
+                .collect(Collectors.joining()) + "}";
     }
 
     private static String enrtyToString(Map.Entry<String, Map<String, Object>> entry) {

@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.Files;
 import java.io.IOException;
@@ -14,15 +13,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FilesCheckerTest {
 
-    private static final Path FILE_1 = Paths.get("src/test/resources/file1.json");
-    private static final Path FILE_2 = Paths.get("src/test/resources/file2.json");
-    private static final Path NOT_EXIST_FILE = Paths.get("src/test/resources/file3.json");
-    private static final Path NOT_READBLE_FILE = Paths.get("src/test/resources/unread.json");
+    private static final String FILE_1 = "src/test/resources/file1.json";
+    private static final String FILE_2 = "src/test/resources/file2.json";
+    private static final String NOT_EXIST_FILE = "src/test/resources/file3.json";
+    private static final String NOT_READBLE_FILE = "src/test/resources/unread.json";
 
     @BeforeAll
     static void init() throws IOException {
         Files.createFile(
-                NOT_READBLE_FILE,
+                Paths.get(NOT_READBLE_FILE),
                 PosixFilePermissions.asFileAttribute(PosixFilePermissions.fromString("-wx-wx-wx")));
     }
 
@@ -76,7 +75,7 @@ class FilesCheckerTest {
 
     @AfterAll
     static void after() throws IOException {
-        Files.deleteIfExists(NOT_READBLE_FILE);
+        Files.deleteIfExists(Paths.get(NOT_READBLE_FILE));
     }
 
 }

@@ -8,5 +8,5 @@
 [![picocli](https://img.shields.io/badge/picocli-4.7.5-green.svg)](https://github.com/remkop/picocli)
 
 ### Project example search differences:
-[![asciicast](https://asciinema.org/a/Q2JOofbfsoAGfF5D5Valsn0Kd.svg)](https://asciinema.org/a/Q2JOofbfsoAGfF5D5Valsn0Kd)
+[![asciicast](https://asciinema.org/a/7R0mFX6bgrUdejBAMJAu9nkCZ.svg)](https://asciinema.org/a/7R0mFX6bgrUdejBAMJAu9nkCZ)
 

@@ -5,9 +5,6 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Parameters;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
 import java.util.concurrent.Callable;
 
 @Command(name = "gendiff",
@@ -34,13 +31,11 @@ class App implements Callable<Integer> {
 
     @Override
     public Integer call() throws Exception {
-        Path first = Paths.get(filePath1);
-        Path second = Paths.get(filePath2);
-        String check = FilesChecker.available(first, second);
+        String check = FilesChecker.available(filePath1, filePath2);
 
         if (check.isEmpty()) {
-            var firstMap = ParseFile.parse(first);
-            var secondMap = ParseFile.parse(second);
+            var firstMap = Parser.parse(filePath1);
+            var secondMap = Parser.parse(filePath2);
             var calcDiff = FindingDifferences.search(firstMap, secondMap);
             System.out.println(Presentation.plainTextPresentation(calcDiff));
         } else {

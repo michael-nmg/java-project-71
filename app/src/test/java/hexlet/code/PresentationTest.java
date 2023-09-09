@@ -35,7 +35,7 @@ class PresentationTest {
                 + "  - timeout: 50\n"
                 + "  + timeout: 20\n"
                 + "  + verbose: true\n"
-                + "}\n";
+                + "}";
         assertEquals(expected, result);
     }
 
