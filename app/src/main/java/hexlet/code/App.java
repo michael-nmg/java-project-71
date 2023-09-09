@@ -37,9 +37,10 @@ class App implements Callable<Integer> {
             var firstMap = Parser.parse(filePath1);
             var secondMap = Parser.parse(filePath2);
             var calcDiff = FindingDifferences.search(firstMap, secondMap);
-            System.out.println(Presentation.plainTextPresentation(calcDiff));
+            String result = Presentation.plainTextPresentation(calcDiff);
+            System.out.println(result);
         } else {
-            System.err.println(check);
+            System.out.println(check);
         }
 
         return 0;

@@ -17,6 +17,8 @@ class FilesCheckerTest {
     private static final String FILE_2 = "src/test/resources/file2.json";
     private static final String NOT_EXIST_FILE = "src/test/resources/file3.json";
     private static final String NOT_READBLE_FILE = "src/test/resources/unread.json";
+    private static final String SAME_FILE_RESPONSE = "Zero changes. This is the same file.";
+
 
     @BeforeAll
     static void init() throws IOException {
@@ -30,7 +32,7 @@ class FilesCheckerTest {
         String actually = FilesChecker.available(FILE_1, FILE_2);
         String expected = "";
 
-        assertEquals(actually, expected);
+        assertEquals(expected, actually);
     }
 
     @Test
@@ -38,7 +40,7 @@ class FilesCheckerTest {
         String actually = FilesChecker.available(NOT_EXIST_FILE, FILE_2);
         String expected = String.format("%s is not exist.", NOT_EXIST_FILE);
 
-        assertEquals(actually, expected);
+        assertEquals(expected, actually);
     }
 
     @Test
@@ -46,7 +48,7 @@ class FilesCheckerTest {
         String actually = FilesChecker.available(FILE_1, NOT_EXIST_FILE);
         String expected = String.format("%s is not exist.", NOT_EXIST_FILE);
 
-        assertEquals(actually, expected);
+        assertEquals(expected, actually);
     }
 
     @Test
@@ -54,7 +56,7 @@ class FilesCheckerTest {
         String actually = FilesChecker.available(NOT_READBLE_FILE, FILE_2);
         String expected = String.format("%s is not readable.", NOT_READBLE_FILE);
 
-        assertEquals(actually, expected);
+        assertEquals(expected, actually);
     }
 
     @Test
@@ -62,15 +64,14 @@ class FilesCheckerTest {
         String actually = FilesChecker.available(FILE_1, NOT_READBLE_FILE);
         String expected = String.format("%s is not readable.", NOT_READBLE_FILE);
 
-        assertEquals(actually, expected);
+        assertEquals(expected, actually);
     }
 
     @Test
     void testSameFile() throws IOException {
         String actually = FilesChecker.available(FILE_1, FILE_1);
-        String expected = "Zero changes. This is the same file.";
 
-        assertEquals(actually, expected);
+        assertEquals(SAME_FILE_RESPONSE, actually);
     }
 
     @AfterAll
