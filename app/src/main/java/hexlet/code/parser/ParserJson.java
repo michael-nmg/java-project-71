@@ -14,8 +14,7 @@ public class ParserJson implements Parser {
             return new HashMap<>();
         }
 
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(data, new TypeReference<>() {
+        return new ObjectMapper().readValue(data, new TypeReference<>() {
         });
     }
 
