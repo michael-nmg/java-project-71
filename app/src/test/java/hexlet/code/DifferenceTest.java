@@ -70,6 +70,7 @@ class DifferenceTest {
 
         Object actualNull = null;
         String actualAnotherClass = "";
+        assertEquals(expectedObject, expectedObject);
         assertNotEquals(expectedObject, actualNull);
         assertNotEquals(expectedObject, actualAnotherClass);
     }
