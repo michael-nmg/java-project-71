@@ -1,7 +1,5 @@
 package hexlet.code;
 
-import hexlet.code.presentation.PresentationFactory;
-
 import java.io.IOException;
 
 import java.util.Map;
@@ -13,15 +11,15 @@ import java.util.function.Function;
 
 import static hexlet.code.FileUtils.getData;
 
-public class GenerateDifferences {
+public class Differ {
 
     public static String generate(String filePath1, String filePath2) throws IOException {
-        return generate("stylish", filePath1, filePath2);
+        return generate(filePath1, filePath2, "stylish");
     }
 
-    public static String generate(String format, String filePath1, String filePath2) throws IOException {
+    public static String generate(String filePath1, String filePath2, String format) throws IOException {
         var data = getDiff(getData(filePath1), getData(filePath2));
-        return PresentationFactory.select(format).presentation(data);
+        return Formatter.select(format).presentation(data);
     }
 
     private static Map<String, Difference> getDiff(Map<String, Object> first, Map<String, Object> second) {

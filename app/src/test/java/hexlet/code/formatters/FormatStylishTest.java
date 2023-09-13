@@ -1,4 +1,4 @@
-package hexlet.code.presentation;
+package hexlet.code.formatters;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
@@ -10,7 +10,7 @@ import hexlet.code.Difference;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class PresentationStylishTest {
+class FormatStylishTest {
 
     private static final Map<String, Difference> TEST_MAP = new TreeMap<>();
     private static final String EXPECTED_DATA = "{\n"
@@ -33,13 +33,13 @@ class PresentationStylishTest {
 
     @Test
     void defaultStylishTest() {
-        String actual = new PresentationStylish().presentation(TEST_MAP);
+        String actual = new FormatStylish().presentation(TEST_MAP);
         assertEquals(EXPECTED_DATA, actual);
     }
 
     @Test
     void emptyStylishTest() {
-        String actual = new PresentationStylish().presentation(new TreeMap<>());
+        String actual = new FormatStylish().presentation(new TreeMap<>());
         String expected = "{}";
         assertEquals(expected, actual);
     }

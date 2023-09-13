@@ -1,13 +1,14 @@
 package hexlet.code;
 
-import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
+
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class GenerateDifferencesTest {
+class DifferTest {
 
+    private static final String EXTENDED = "stylish";
     private static final String FILE_1 = "src/test/resources/file1.json";
     private static final String FILE_2 = "src/test/resources/file2.json";
     private static final String EMPTY_FILE = "src/test/resources/emptyfile.json";
@@ -39,19 +40,19 @@ class GenerateDifferencesTest {
 
     @Test
     void testGenerateDefault() throws IOException {
-        String actual = GenerateDifferences.generate(FILE_1, FILE_2);
+        String actual = Differ.generate(FILE_1, FILE_2);
         assertEquals(EXPECTED_DATA, actual);
     }
 
     @Test
     void testGenerateExtended() throws IOException {
-        String actual = GenerateDifferences.generate("stylish", FILE_1, FILE_2);
+        String actual = Differ.generate(FILE_1, FILE_2, EXTENDED);
         assertEquals(EXPECTED_DATA, actual);
     }
 
     @Test
     void emptyTest() throws IOException {
-        String actual = GenerateDifferences.generate(EMPTY_FILE, EMPTY_FILE);
+        String actual = Differ.generate(EMPTY_FILE, EMPTY_FILE);
         String expected = "{}";
 
         assertEquals(expected, actual);

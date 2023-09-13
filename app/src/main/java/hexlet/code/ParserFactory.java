@@ -1,4 +1,8 @@
-package hexlet.code.parser;
+package hexlet.code;
+
+import hexlet.code.parsers.Parser;
+import hexlet.code.parsers.ParserJson;
+import hexlet.code.parsers.ParserYaml;
 
 import java.io.IOException;
 

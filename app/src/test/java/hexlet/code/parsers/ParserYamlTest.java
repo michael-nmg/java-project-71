@@ -1,4 +1,4 @@
-package hexlet.code.parser;
+package hexlet.code.parsers;
 
 import hexlet.code.FileUtils;
 import org.junit.jupiter.api.Test;
@@ -11,10 +11,10 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ParserJsonTest {
+class ParserYamlTest {
 
     private static final byte[] EMPTY_FILE = new byte[0];
-    private static final String FILE_1 = "src/test/resources/file1.json";
+    private static final String FILE_1 = "src/test/resources/file1.yml";
     private static final Map<String, Object> EXPECTED_DATA = new HashMap<>();
 
     @BeforeAll
@@ -35,7 +35,7 @@ class ParserJsonTest {
 
     @Test
     void defaultTest() throws IOException {
-        var actual = new ParserJson().parse(FileUtils.readFile(FILE_1));
+        var actual = new ParserYaml().parse(FileUtils.readFile(FILE_1));
         assertEquals(EXPECTED_DATA.size(), actual.size());
 
         for (var entry : actual.entrySet()) {
@@ -45,7 +45,7 @@ class ParserJsonTest {
 
     @Test
     void emptyFileTest() throws IOException {
-        var actual = new ParserJson().parse(EMPTY_FILE);
+        var actual = new ParserYaml().parse(EMPTY_FILE);
         var expected = new HashMap<>();
         assertEquals(expected, actual);
     }

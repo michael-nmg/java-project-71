@@ -6,8 +6,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.io.IOException;
 
-import hexlet.code.parser.ParserFactory;
-
 public class FileUtils {
 
     public static String getExtension(String filePath) {

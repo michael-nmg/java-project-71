@@ -38,7 +38,7 @@ class App implements Callable<Integer> {
         try {
             String check = FileUtils.available(filePath1, filePath2);
             if (check.isEmpty()) {
-                var result = GenerateDifferences.generate(format, filePath1, filePath2);
+                var result = Differ.generate(filePath1, filePath2, format);
                 System.out.println(result);
                 return SUCCES_CODE;
             } else {

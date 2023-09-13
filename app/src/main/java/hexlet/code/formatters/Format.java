@@ -1,9 +1,9 @@
-package hexlet.code.presentation;
+package hexlet.code.formatters;
 
 import hexlet.code.Difference;
 
 import java.util.Map;
 
-public interface Presentation {
+public interface Format {
     String presentation(Map<String, Difference> data);
 }

@@ -1,11 +1,12 @@
-package hexlet.code.presentation;
+package hexlet.code.formatters;
 
+import hexlet.code.Formatter;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-class PresentationFactoryTest {
+class FormatterTest {
 
     private static final String OTHER = "xxx";
     private static final String JSON = "json";
@@ -14,25 +15,25 @@ class PresentationFactoryTest {
 
 //    @Test
 //    void selectJsonTest() {
-//        Presentation actual = PresentationFactory.select(JSON);
+//        Format actual = Formatter.select(JSON);
 //        assertEquals(PresentationJson.class, actual.getClass());
 //    }
 
     @Test
     void selectPlainTest() {
-        Presentation actual = PresentationFactory.select(PLAIN);
-        assertEquals(PresentationPlain.class, actual.getClass());
+        Format actual = Formatter.select(PLAIN);
+        assertEquals(FormatPlain.class, actual.getClass());
     }
 
     @Test
     void selectStylishTest() {
-        Presentation actual = PresentationFactory.select(STYLISH);
-        assertEquals(PresentationStylish.class, actual.getClass());
+        Format actual = Formatter.select(STYLISH);
+        assertEquals(FormatStylish.class, actual.getClass());
     }
 
     @Test
     void selectOtherTest() {
-        assertThrows(RuntimeException.class, () -> PresentationFactory.select(OTHER));
+        assertThrows(RuntimeException.class, () -> Formatter.select(OTHER));
     }
 
 }

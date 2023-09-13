@@ -1,11 +1,11 @@
-package hexlet.code.presentation;
+package hexlet.code.formatters;
 
 import java.util.Map;
 import java.util.stream.Collectors;
 
 import hexlet.code.Difference;
 
-public class PresentationStylish implements Presentation {
+public class FormatStylish implements Format {
 
     public String presentation(Map<String, Difference> data) {
         if (data.isEmpty()) {
@@ -13,7 +13,7 @@ public class PresentationStylish implements Presentation {
         }
 
         return "{\n" + data.entrySet().stream()
-                .map(PresentationStylish::convertor)
+                .map(FormatStylish::convertor)
                 .collect(Collectors.joining()) + "}";
     }
 
