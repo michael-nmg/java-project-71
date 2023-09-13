@@ -46,19 +46,20 @@ public class Difference {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
+    public boolean equals(Object object) {
+        if (this == object) {
             return true;
         }
 
-        if (o == null || getClass() != o.getClass()) {
+        if (object == null || getClass() != object.getClass()) {
             return false;
         }
 
-        Difference that = (Difference) o;
-        return Objects.equals(status, that.status)
-                && Objects.equals(value1, that.value1)
-                && Objects.equals(value2, that.value2);
+        Difference that = (Difference) object;
+        boolean result = Objects.equals(status, that.status);
+        result &= Objects.equals(value1, that.value1);
+        result &= Objects.equals(value2, that.value2);
+        return result;
     }
 
     @Override
