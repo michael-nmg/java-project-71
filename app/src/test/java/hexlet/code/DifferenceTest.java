@@ -67,6 +67,11 @@ class DifferenceTest {
 
         actualObj.setStatus("another status");
         assertNotEquals(expectedObject, actualObj);
+
+        Object actualNull = null;
+        String actualAnotherClass = "";
+        assertNotEquals(expectedObject, actualNull);
+        assertNotEquals(expectedObject, actualAnotherClass);
     }
 
     @Test

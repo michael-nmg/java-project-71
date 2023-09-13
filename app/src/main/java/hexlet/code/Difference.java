@@ -51,19 +51,15 @@ public class Difference {
             return true;
         }
 
-        if (object == null) {
-            return false;
+        if (object != null && getClass() == object.getClass()) {
+            Difference that = (Difference) object;
+            boolean check = Objects.equals(status, that.status);
+            check &= Objects.equals(value1, that.value1);
+            check &= Objects.equals(value2, that.value2);
+            return check;
         }
 
-        if (getClass() != object.getClass()) {
-            return false;
-        }
-
-        Difference that = (Difference) object;
-        boolean result = Objects.equals(status, that.status);
-        result &= Objects.equals(value1, that.value1);
-        result &= Objects.equals(value2, that.value2);
-        return result;
+        return false;
     }
 
     @Override
