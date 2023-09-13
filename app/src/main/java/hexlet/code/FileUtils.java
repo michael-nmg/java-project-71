@@ -1,12 +1,28 @@
 package hexlet.code;
 
-import java.io.IOException;
-
+import java.util.Map;
 import java.nio.file.Path;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.io.IOException;
 
-public class FilesChecker {
+import hexlet.code.parser.ParserFactory;
+
+public class FileUtils {
+
+    public static String getExtension(String filePath) {
+        return filePath.substring(filePath.lastIndexOf(".") + 1).toLowerCase();
+    }
+
+    public static byte[] readFile(String filePath) throws IOException {
+        Path path = Paths.get(filePath);
+        return Files.readAllBytes(path);
+    }
+
+    public static Map<String, Object> getData(String filePath) throws IOException {
+        String fileExtension = getExtension(filePath);
+        return ParserFactory.selectOfParser(fileExtension).parse(readFile(filePath));
+    }
 
     public static String available(String filePath1, String filePath2) throws IOException {
         Path first = Paths.get(filePath1);
