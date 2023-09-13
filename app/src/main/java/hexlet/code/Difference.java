@@ -51,7 +51,11 @@ public class Difference {
             return true;
         }
 
-        if (object == null || getClass() != object.getClass()) {
+        if (object == null) {
+            return false;
+        }
+
+        if (getClass() != object.getClass()) {
             return false;
         }
 
