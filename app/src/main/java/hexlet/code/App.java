@@ -34,7 +34,7 @@ class App implements Callable<Integer> {
     private String filePath2;
 
     @Override
-    public Integer call() {
+    public Integer call() throws Exception {
         try {
             String check = FileUtils.available(filePath1, filePath2);
             if (check.isEmpty()) {

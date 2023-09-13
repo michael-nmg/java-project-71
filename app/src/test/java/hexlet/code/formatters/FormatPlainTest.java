@@ -20,7 +20,8 @@ class FormatPlainTest {
             + "Property 'numbers' was added with value: [complex value]\n"
             + "Property 'proxy' was removed\n"
             + "Property 'timeout' was updated. From 50 to 20\n"
-            + "Property 'verbose' was added with value: true\n";
+            + "Property 'vector' was added with value: null\n"
+            + "Property 'verbose' was added with value: true";
 
     @BeforeAll
     static void init() {
@@ -31,6 +32,7 @@ class FormatPlainTest {
         TEST_MAP.put("proxy", new Difference("removed", "123.234.53.22"));
         TEST_MAP.put("timeout", new Difference("updated", 50, 20));
         TEST_MAP.put("numbers", new Difference("added", List.of(1, 2, 3, 4, 5)));
+        TEST_MAP.put("vector", new Difference("added", null));
     }
 
     @Test

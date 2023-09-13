@@ -13,11 +13,11 @@ class FormatterTest {
     private static final String PLAIN = "plain";
     private static final String STYLISH = "stylish";
 
-//    @Test
-//    void selectJsonTest() {
-//        Format actual = Formatter.select(JSON);
-//        assertEquals(PresentationJson.class, actual.getClass());
-//    }
+    @Test
+    void selectJsonTest() {
+        Format actual = Formatter.select(JSON);
+        assertEquals(FormatJson.class, actual.getClass());
+    }
 
     @Test
     void selectPlainTest() {

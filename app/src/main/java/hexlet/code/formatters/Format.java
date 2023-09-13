@@ -5,5 +5,5 @@ import hexlet.code.Difference;
 import java.util.Map;
 
 public interface Format {
-    String presentation(Map<String, Difference> data);
+    String presentation(Map<String, Difference> data) throws Exception;
 }

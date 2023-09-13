@@ -14,7 +14,7 @@ public class FormatPlain implements Format {
 
         return data.entrySet().stream()
                 .map(entry -> convertor(entry.getKey(), entry.getValue()))
-                .collect(Collectors.joining());
+                .collect(Collectors.joining()).trim();
     }
 
     private static String convertor(String key, Difference diff) {

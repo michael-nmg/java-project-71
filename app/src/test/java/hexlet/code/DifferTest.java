@@ -1,7 +1,5 @@
 package hexlet.code;
 
-import java.io.IOException;
-
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,19 +37,19 @@ class DifferTest {
             + "}";
 
     @Test
-    void testGenerateDefault() throws IOException {
+    void testGenerateDefault() throws Exception {
         String actual = Differ.generate(FILE_1, FILE_2);
         assertEquals(EXPECTED_DATA, actual);
     }
 
     @Test
-    void testGenerateExtended() throws IOException {
+    void testGenerateExtended() throws Exception {
         String actual = Differ.generate(FILE_1, FILE_2, EXTENDED);
         assertEquals(EXPECTED_DATA, actual);
     }
 
     @Test
-    void emptyTest() throws IOException {
+    void emptyTest() throws Exception {
         String actual = Differ.generate(EMPTY_FILE, EMPTY_FILE);
         String expected = "{}";
 

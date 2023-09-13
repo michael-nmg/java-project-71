@@ -1,6 +1,5 @@
 package hexlet.code.formatters;
 
-import hexlet.code.Difference;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -8,7 +7,10 @@ import java.util.Map;
 import java.util.List;
 import java.util.TreeMap;
 
+import hexlet.code.Difference;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class FormatJsonTest {
 
@@ -33,16 +35,22 @@ class FormatJsonTest {
     }
 
     @Test
-    void defaultPlainTest() {
+    void defaultJsonTest() throws Exception {
         String actual = new FormatJson().presentation(TEST_MAP);
         assertEquals(EXPECTED_DATA, actual);
     }
 
     @Test
-    void emptyPlainTest() {
+    void emptyJsonTest() throws Exception {
         String actual = new FormatJson().presentation(new TreeMap<>());
         String expected = "[]";
         assertEquals(expected, actual);
+    }
+
+    @Test
+    void throwUnsupportedStatusJsonTest() {
+        Map<String, Difference> testMap = Map.of("key", new Difference("unsupported", 0, null));
+        assertThrows(RuntimeException.class, () -> new FormatJson().presentation(testMap));
     }
 
 }

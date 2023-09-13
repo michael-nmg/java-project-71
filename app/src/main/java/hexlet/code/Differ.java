@@ -1,7 +1,5 @@
 package hexlet.code;
 
-import java.io.IOException;
-
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
@@ -13,11 +11,11 @@ import static hexlet.code.FileUtils.getData;
 
 public class Differ {
 
-    public static String generate(String filePath1, String filePath2) throws IOException {
+    public static String generate(String filePath1, String filePath2) throws Exception {
         return generate(filePath1, filePath2, "stylish");
     }
 
-    public static String generate(String filePath1, String filePath2, String format) throws IOException {
+    public static String generate(String filePath1, String filePath2, String format) throws Exception {
         var data = getDiff(getData(filePath1), getData(filePath2));
         return Formatter.select(format).presentation(data);
     }

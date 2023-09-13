@@ -2,7 +2,6 @@ package hexlet.code.formatters;
 
 import hexlet.code.Difference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.core.JsonProcessingException;
 
 import java.util.Map;
 import java.util.List;
@@ -11,18 +10,12 @@ import java.util.stream.Collectors;
 
 public class FormatJson implements Format {
 
-    public String presentation(Map<String, Difference> data) {
+    public String presentation(Map<String, Difference> data) throws Exception {
         if (data.isEmpty()) {
             return "[]";
         }
 
-        try {
-            return new ObjectMapper().writeValueAsString(prepare(data));
-        } catch (JsonProcessingException exception) {
-            System.out.println(exception.getMessage());
-        }
-
-        return "[]";
+        return new ObjectMapper().writeValueAsString(prepare(data));
     }
 
     private static List<Map<String, Object>> prepare(Map<String, Difference> data) {
