@@ -7,7 +7,7 @@ import java.io.IOException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
 
-public class ParserYaml implements Parser {
+public final class ParserYaml implements Parser {
 
     public Map<String, Object> parse(byte[] data) throws IOException {
         if (data.length == 0) {

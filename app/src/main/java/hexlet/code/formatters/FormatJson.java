@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 
-public class FormatJson implements Format {
+public final class FormatJson implements Format {
 
     public String presentation(Map<String, Difference> data) throws Exception {
         if (data.isEmpty()) {

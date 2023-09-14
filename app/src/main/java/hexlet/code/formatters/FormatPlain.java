@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 
 import hexlet.code.Difference;
 
-public class FormatPlain implements Format {
+public final class FormatPlain implements Format {
     public String presentation(Map<String, Difference> data) {
         if (data.isEmpty()) {
             return "";

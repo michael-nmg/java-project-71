@@ -12,6 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class FormatStylishTest {
 
+    private static final Object VALUE_1 = 50;
+    private static final Object VALUE_2 = 20;
     private static final Map<String, Difference> TEST_MAP = new TreeMap<>();
     private static final String EXPECTED_DATA = "{\n"
             + "  - follow: false\n"
@@ -28,7 +30,7 @@ class FormatStylishTest {
         TEST_MAP.put("verbose", new Difference("added", true));
         TEST_MAP.put("host", new Difference("unchanged", "hexlet.io"));
         TEST_MAP.put("proxy", new Difference("removed", "123.234.53.22"));
-        TEST_MAP.put("timeout", new Difference("update", 50, 20));
+        TEST_MAP.put("timeout", new Difference("update", VALUE_1, VALUE_2));
     }
 
     @Test

@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 import hexlet.code.Difference;
 
-public class FormatStylish implements Format {
+public final class FormatStylish implements Format {
 
     public String presentation(Map<String, Difference> data) {
         if (data.isEmpty()) {
