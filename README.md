@@ -5,11 +5,11 @@
 
 #### Description:
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Консольная утилита сравнивает два файла формата: `json` или `yaml`.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Результат выводится в форматах: `stylish` (по умолчанию), `plain text`, `json`.
+Консольная утилита сравнивает два файла формата: `json` или `yaml`.
+Результат выводится в форматах: `stylish` (по умолчанию), `plain text`, `json`.
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Console utility compares two files formats: `json` or `yaml`.
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Result is output in following formats: `stylish` (default), `plain text`, `json`.
+Console utility compares two files formats: `json` or `yaml`.
+Result is output in following formats: `stylish` (default), `plain text`, `json`.
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Project uses picocli**. [![picocli](https://img.shields.io/badge/picocli-4.7.5-green.svg)](https://github.com/remkop/picocli)
